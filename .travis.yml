@@ -1,7 +1,9 @@
 dist: trusty
 sudo: false
 language: c
-before_install: sudo apt install valgrind
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq valgrind
 
 compiler:
   - clang
