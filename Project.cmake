@@ -1,5 +1,5 @@
 set (CMAKE_C_STANDARD 11)
-
+include (CTest)
 #compiler warnings
 if(MSVC)
   # Force to always compile with W4

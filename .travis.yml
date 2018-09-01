@@ -11,3 +11,4 @@ script:
  - scan-build make
  - cmake --build . -- -j2
  - ctest -j2
+ - ctest -T memcheck

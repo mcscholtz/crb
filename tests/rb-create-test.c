@@ -14,7 +14,7 @@ void rb_create_test(CuTest * tc)
     CuAssertIntEquals(tc, 1, ringbuffer->isempty(ringbuffer));
     CuAssertIntEquals(tc, 0, ringbuffer->isfull(ringbuffer));
 
-    rb_delete(ringbuffer);
+ //   rb_delete(ringbuffer);
 }
 
 

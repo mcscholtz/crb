@@ -1,6 +1,5 @@
 cmake_minimum_required (VERSION 3.9.2)
 project (ProjectTests)
-enable_testing()
 include(../Project.cmake)
 
 #Test Lib Source
@@ -43,3 +42,8 @@ foreach(file ${files})
     NAME ${TEST_EXE}
     COMMAND ${TEST_EXE})
 endforeach()
+
+add_custom_target(test_memcheck
+    COMMAND ${CMAKE_CTEST_COMMAND} 
+        --force-new-ctest-process --test-action memcheck
+    COMMAND cat "${CMAKE_BINARY_DIR}/Testing/Temporary/MemoryChecker.*.log")
