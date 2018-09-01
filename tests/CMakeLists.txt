@@ -42,8 +42,3 @@ foreach(file ${files})
     NAME ${TEST_EXE}
     COMMAND ${TEST_EXE})
 endforeach()
-
-add_custom_target(test_memcheck
-    COMMAND ${CMAKE_CTEST_COMMAND} 
-        --force-new-ctest-process --test-action memcheck
-    COMMAND cat "${CMAKE_BINARY_DIR}/Testing/Temporary/MemoryChecker.*.log")
