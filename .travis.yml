@@ -8,5 +8,6 @@ compiler:
 
 script:
  - cmake .
+ - scan-build make
  - cmake --build . -- -j2
  - ctest -j2
