@@ -1,6 +1,8 @@
 #ifndef __RB_H
 #define __RB_H
 
+#define NEXT(self, index) ((index+1) % self->_capacity)
+
 struct rb {
     void (*enqueue)(struct rb * self, void * elem);
     void (*dequeue)(struct rb * self, void * elem);
