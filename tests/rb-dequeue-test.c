@@ -1,7 +1,7 @@
 #include "suite.h"
 #include "rb.h"
 
-void rb_create_test(CuTest * tc)
+void rb_dequeue_test(CuTest * tc)
 {
     struct rb * ringbuffer = rb_new(5,sizeof(int));
     //*note the capacity is 5 but it can always only hold capacity-1
@@ -28,4 +28,4 @@ void rb_create_test(CuTest * tc)
 }
 
 
-int main(void) { return execute(rb_create_test);}
+int main(void) { return execute(rb_dequeue_test);}

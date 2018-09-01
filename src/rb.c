@@ -6,6 +6,7 @@
 
 static void rb_enqueue(struct rb * self, void * elem);
 static void rb_dequeue(struct rb * self, void * elem);
+static void * rb_dequeue_alloc(struct rb * self);
 
 struct rb * rb_new(int capacity, int elemsize)
 {
@@ -22,6 +23,7 @@ struct rb * rb_new(int capacity, int elemsize)
     self->isempty = rb_isempty;
     self->enqueue = rb_enqueue;
     self->dequeue = rb_dequeue;
+    self->dequeue_a = rb_dequeue_alloc;
     return self;  
 }
 
@@ -49,4 +51,16 @@ static void rb_dequeue(struct rb * self, void * elem)
     memcpy(elem, self->_array + self->_tail*self->_elemsize,self->_elemsize);
     self->_tail = NEXT(self, self->_tail);
     self->length--;
+}
+
+static void * rb_dequeue_alloc(struct rb * self)
+{
+    assert(self != NULL && "Ringbuffer is NULL");
+    assert(rb_isempty(self) != 1);
+    void * elem = malloc(self->_elemsize);
+    assert(elem != NULL && "Out of memory");
+    memcpy(elem, self->_array + self->_tail*self->_elemsize,self->_elemsize);
+    self->_tail = NEXT(self, self->_tail);
+    self->length--;
+    return elem;
 }
